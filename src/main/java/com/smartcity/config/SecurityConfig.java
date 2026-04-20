@@ -40,10 +40,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .anyRequest().authenticated()
+                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/api/public/**").permitAll()
+                    .requestMatchers("/v3/api-docs/*", "/swagger-ui/*").permitAll()
+                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                    .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
