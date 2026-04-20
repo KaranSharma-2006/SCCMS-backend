@@ -53,13 +53,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(
+            configuration.setAllowedOrigins(List.of(
             "http://localhost:3000",
-            "http://localhost:3001",
-            "http://localhost:3002",
-            "http://localhost:3003",
             "http://localhost:5173",
-            "https://sccms-frontend-fj62.vercel.app"
+            "https://sccms-frontend-fj62.vercel.app",
+            "https://sccms-frontend-fj62-qsj37a754.vercel.app"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
